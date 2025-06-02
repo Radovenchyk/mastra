@@ -54,15 +54,17 @@ function Agent() {
           <AgentSidebar agentId={agentId!} threadId={threadId!} threads={threads} isLoading={isThreadsLoading} />
         )}
 
-        <Chat
-          agentId={agentId!}
-          agentName={agent?.name}
-          threadId={threadId!}
-          initialMessages={isMessagesLoading ? undefined : (messages as Message[])}
-          memory={memory?.result}
-          refreshThreadList={refreshThreads}
-          showFileSupport={isCliShowMultiModal}
-        />
+        <div className="grid overflow-y-auto relative bg-surface1 py-4">
+          <Chat
+            agentId={agentId!}
+            agentName={agent?.name}
+            threadId={threadId!}
+            initialMessages={isMessagesLoading ? undefined : (messages as Message[])}
+            memory={memory?.result}
+            refreshThreadList={refreshThreads}
+            showFileSupport={isCliShowMultiModal}
+          />
+        </div>
 
         <AgentInformation agentId={agentId!} />
       </div>

@@ -40,9 +40,10 @@ export const Thread = ({ ToolFallback, agentName, hasMemory, showFileSupport }: 
 
   return (
     <ThreadWrapper>
-      <ThreadPrimitive.Viewport className="py-10 overflow-y-auto scroll-smooth h-full" ref={areaRef} autoScroll={false}>
-        <div>
-          <ThreadWelcome agentName={agentName} />
+      <ThreadPrimitive.Viewport ref={areaRef} autoScroll={false} className="overflow-y-scroll scroll-smooth h-full">
+        <ThreadWelcome agentName={agentName} />
+
+        <div className="max-w-[568px] w-full mx-auto px-4 pb-7">
           <ThreadPrimitive.Messages
             components={{
               UserMessage: UserMessage,
@@ -63,17 +64,8 @@ export const Thread = ({ ToolFallback, agentName, hasMemory, showFileSupport }: 
 };
 
 const ThreadWrapper = ({ children }: { children: React.ReactNode }) => {
-  const hasAttachments = useHasAttachments();
-
   return (
-    <ThreadPrimitive.Root
-      className={clsx(
-        'max-w-[568px] w-full mx-auto px-4',
-        hasAttachments ? 'h-[calc(100%-208px)]' : 'h-[calc(100%-112px)]',
-      )}
-    >
-      {children}
-    </ThreadPrimitive.Root>
+    <ThreadPrimitive.Root className="grid grid-rows-[1fr_auto] h-full overflow-y-auto">{children}</ThreadPrimitive.Root>
   );
 };
 
@@ -113,7 +105,8 @@ const Composer: FC<{ hasMemory?: boolean; showFileSupport?: boolean }> = ({ hasM
       <ComposerPrimitive.Root>
         <ComposerAttachments />
 
-        <div className="w-full bg-surface3 rounded-lg border-sm border-border1 px-3 py-4 mt-auto h-[100px]">
+        <div className="bg-surface3 rounded-lg border-sm border-border1  py-4 mt-auto max-w-[568px] w-full mx-auto px-4">
+          {/* <div className="w-full bg-surface3 rounded-lg border-sm border-border1 px-3 py-4 mt-auto h-[100px]"> */}
           <ComposerPrimitive.Input asChild className="w-full">
             <textarea
               className="text-ui-lg leading-ui-lg placeholder:text-icon3 text-icon6 bg-transparent focus:outline-none resize-none"

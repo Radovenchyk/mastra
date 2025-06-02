@@ -11,10 +11,15 @@ import { useDeleteThread } from '@/hooks/use-memory';
 import { StorageThreadType } from '@mastra/core';
 
 const formatDay = (date: Date) => {
-  return new Date(date).toLocaleDateString('en-us', {
-    month: 'long',
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short',
     day: 'numeric',
-  });
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+  };
+  return new Date(date).toLocaleString('en-us', options).replace(',', ' at');
 };
 
 export function AgentSidebar({
@@ -59,7 +64,7 @@ export function AgentSidebar({
   const reverseThreads = [...(threads || [])].reverse();
 
   return (
-    <div className="overflow-y-auto ">
+    <div className="overflow-y-auto h-full w-full">
       <Threads>
         <ThreadList>
           <ThreadItem>
@@ -86,8 +91,8 @@ export function AgentSidebar({
             return (
               <ThreadItem isActive={isActive} key={thread.id}>
                 <ThreadLink as={Link} to={`/agents/${agentId}/chat/${thread.id}`}>
-                  <span className="truncate">{thread.title}</span>
-                  <p className="text-ui-xs text-icon3">{formatDay(thread.createdAt)}</p>
+                  <span className="text-muted-foreground">Chat from</span>
+                  <span>{formatDay(thread.createdAt)}</span>
                 </ThreadLink>
 
                 <ThreadDeleteButton onClick={() => setDeleteId(thread.id)} />

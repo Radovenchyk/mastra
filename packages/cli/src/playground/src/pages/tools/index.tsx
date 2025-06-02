@@ -136,7 +136,7 @@ const ToolsInner = ({ toolsWithAgents }: { toolsWithAgents: ToolWithAgents[] }) 
   }
 
   return (
-    <div className="grid grid-rows-[auto_1fr] h-full" style={{ border: '2px solid red' }}>
+    <div className="grid grid-rows-[auto_1fr] h-full">
       <Header>
         <HeaderTitle>Tools</HeaderTitle>
       </Header>

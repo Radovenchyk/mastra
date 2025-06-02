@@ -49,14 +49,11 @@ function Agent() {
       defaultGenerateOptions={agent?.defaultGenerateOptions}
       defaultStreamOptions={agent?.defaultStreamOptions}
     >
-      {/* <section className={cn('relative h-[calc(100%-40px)] flex w-full')}> */}
-      <div className="grid grid-cols-[auto_1fr_1fr] h-full overflow-x-auto min-w-[min-content]" style={{}}>
+      <div className="grid grid-cols-[auto_1fr_1fr] h-full overflow-x-auto min-w-[min-content]">
         {Boolean(sidebar && memory?.result) && (
           <AgentSidebar agentId={agentId!} threadId={threadId!} threads={threads} isLoading={isThreadsLoading} />
         )}
 
-        {/* <div>Chat</div> */}
-        {/* <div className={cn('relative overflow-y-hidden grow min-w-[325px] h-full')}> */}
         <Chat
           agentId={agentId!}
           agentName={agent?.name}
@@ -68,14 +65,6 @@ function Agent() {
         />
 
         <AgentInformation agentId={agentId!} />
-        {/* <MastraResizablePanel
-          defaultWidth={30}
-          minimumWidth={30}
-          maximumWidth={60}
-          className="flex flex-col min-w-[325px] right-0 top-0 h-full z-20 bg-surface2 [&>div:first-child]:-left-[1px] [&>div:first-child]:-right-[1px] [&>div:first-child]:w-[1px] [&>div:first-child]:bg-[#424242] [&>div:first-child]:hover:w-[2px] [&>div:first-child]:active:w-[2px]"
-        >
-          <AgentInformation agentId={agentId!} />
-        </MastraResizablePanel> */}
       </div>
     </AgentProvider>
   );

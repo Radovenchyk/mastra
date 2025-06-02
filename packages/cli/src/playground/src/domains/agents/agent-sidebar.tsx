@@ -59,12 +59,7 @@ export function AgentSidebar({
   const reverseThreads = [...(threads || [])].reverse();
 
   return (
-    <div
-      style={{
-        // border: '2px solid red',
-        maxWidth: '12rem',
-      }}
-    >
+    <div className="overflow-y-auto ">
       <Threads>
         <ThreadList>
           <ThreadItem>
@@ -80,7 +75,8 @@ export function AgentSidebar({
 
           {reverseThreads.length === 0 && (
             <Txt as="p" variant="ui-sm" className="text-icon3 py-3 px-5">
-              Your conversations will appear here once you start chatting!
+              Your conversations will appear here
+              <br /> once you start chatting!
             </Txt>
           )}
 

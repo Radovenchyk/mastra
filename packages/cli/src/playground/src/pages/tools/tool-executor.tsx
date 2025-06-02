@@ -29,7 +29,6 @@ const ToolExecutor = ({
   const theme = useCodemirrorTheme();
   const code = JSON.stringify(result ?? {}, null, 2);
 
-  // <div className="w-full h-full grid grid-cols-[400px_1fr] bg-surface1">
   return (
     <div className="grid relative bg-surface1 h-full overflow-y-auto grid-cols-[minmax(14rem,_24rem)_minmax(20rem,_1fr)]">
       <div className="border-r-sm border-border1 bg-surface2 grid grid-rows-[auto_1fr] overflow-y-auto">

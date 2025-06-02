@@ -3207,7 +3207,7 @@ export const codeowners_errorsSchema = {
             type: 'string',
           },
           path: {
-            description: 'The path of the file where the error occured.',
+            description: 'The path of the file where the error occurred.',
             example: '.github/CODEOWNERS',
             type: 'string',
           },
